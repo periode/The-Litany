@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.VideoView;
+import android.view.Window;
+import android.view.WindowManager;
 
 public class MyActivity extends AppCompatActivity {
 
@@ -22,9 +24,9 @@ public class MyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.video_layout);
 
         vv = (VideoView)findViewById(R.id.videoView);
@@ -46,20 +48,20 @@ public class MyActivity extends AppCompatActivity {
             @Override
             public void onPrepared(MediaPlayer mp) {
 //                Log.i("info", "STARTING");
-//                mp.setLooping(true);
+                mp.setLooping(true);
                 vv.start();
             }
         });
 
-        vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
-            @Override
-            public void onCompletion(MediaPlayer mp){
-                Log.i("info", "RESTARTING");
-
-                vv.seekTo(0);
-                vv.start();
-            }
-        });
+//            vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
+//                @Override
+//                public void onCompletion(MediaPlayer mp){
+//                    Log.i("info", "RESTARTING");
+//
+//                    vv.seekTo(0);
+//                    vv.start();
+//                }
+//            });
     }
 
     @Override
