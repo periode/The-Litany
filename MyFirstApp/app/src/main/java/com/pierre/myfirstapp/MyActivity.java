@@ -1,14 +1,11 @@
 package com.pierre.myfirstapp;
 
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.VideoView;
@@ -23,23 +20,32 @@ public class MyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.video_layout);
 
         vv = (VideoView)findViewById(R.id.videoView);
+        vv.setKeepScreenOn(true);
 
         try {
-            vv.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.movie));
+            vv.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.movietl480360));
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
             e.printStackTrace();
         }
 
+//        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+//        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag");
+//        wl.acquire();
+
         vv.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 
             @Override
             public void onPrepared(MediaPlayer mp) {
-                Log.i("info", "STARTING");
+//                Log.i("info", "STARTING");
 //                mp.setLooping(true);
                 vv.start();
             }
@@ -54,37 +60,7 @@ public class MyActivity extends AppCompatActivity {
                 vv.start();
             }
         });
-//        super.onCreate(savedInstanceState);
-//
-//        mediaPlayer = new MediaPlayer();
-//        startMovie();
-
     }
-
-//    private void startMovie(){
-//        mediaPlayer = MediaPlayer.create(this, Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.movie));
-////        mediaPlayer.stop();
-////        mediaPlayer.reset();
-////        mediaPlayer.setDataSource();
-//
-//        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//            @Override
-//            public void onPrepared(MediaPlayer mp) {
-////                mp.setWakeMode(getApplicationContext(), PowerManager.PARTIAL_WAKE_LOCK);
-//                mp.start();
-//                mp.seekTo(0);
-//            }
-//        });
-//
-//        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(MediaPlayer mp) {
-//                startMovie();
-//            }
-//        });
-//
-////        mediaPlayer.prepareAsync();
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
