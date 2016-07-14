@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.VideoView;
 import android.view.Window;
 import android.view.WindowManager;
+import android.app.ActionBar;
 
 public class MyActivity extends AppCompatActivity {
 
@@ -24,40 +26,57 @@ public class MyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        //HIDE SYSTEM UI
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        //LOAD LAYOUT.XML
         setContentView(R.layout.video_layout);
 
+        // GET VIDEO VIEW FROM LAYOUT
         vv = (VideoView)findViewById(R.id.videoView);
+
+        // KEEP SCREEN ON
         vv.setKeepScreenOn(true);
 
+        // LOAD VIDEO
         try {
-            vv.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.movietl480360));
+            vv.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.tl002));
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
             e.printStackTrace();
         }
 
+        // KEEP SCREEN ON - deprecated?
 //        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 //        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag");
 //        wl.acquire();
 
+
+        //------------ ALL DEVICES
+        //
+        //
         vv.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 
             @Override
             public void onPrepared(MediaPlayer mp) {
-//                Log.i("info", "STARTING");
+
+//                --- UNCOMMENT FOR BUILDING
                 mp.setLooping(true);
+
                 vv.start();
             }
         });
 
+
+        //------------ YIFANG TABLETS --- UNCOMMENT ALL FOR BUILDING
+        //
+        //
 //            vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
 //                @Override
 //                public void onCompletion(MediaPlayer mp){
-//                    Log.i("info", "RESTARTING");
-//
 //                    vv.seekTo(0);
 //                    vv.start();
 //                }
