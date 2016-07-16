@@ -40,16 +40,11 @@ public class MyActivity extends AppCompatActivity {
 
         // LOAD VIDEO
         try {
-            vv.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.tl003));
+            vv.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.tl095));
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
             e.printStackTrace();
         }
-
-        // KEEP SCREEN ON - deprecated?
-//        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-//        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag");
-//        wl.acquire();
 
 
         //------------ ALL DEVICES
@@ -60,8 +55,8 @@ public class MyActivity extends AppCompatActivity {
             @Override
             public void onPrepared(MediaPlayer mp) {
 
-//                --- UNCOMMENT FOR BUILDING
-                mp.setLooping(true);
+//                --- UNCOMMENT FOR PHONE BUILDING
+//                mp.setLooping(true);
 
                 vv.start();
             }
@@ -71,13 +66,14 @@ public class MyActivity extends AppCompatActivity {
         //------------ YIFANG TABLETS --- UNCOMMENT ALL FOR BUILDING
         //
         //
-//            vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
-//                @Override
-//                public void onCompletion(MediaPlayer mp){
-//                    vv.seekTo(0);
-//                    vv.start();
-//                }
-//            });
+//        vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
+//            @Override
+//            public void onCompletion(MediaPlayer mp){
+//                vv.seekTo(0);
+//                vv.start();
+//            }
+//        });
+
     }
 
     @Override
