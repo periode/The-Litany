@@ -56,7 +56,7 @@ public class MyActivity extends AppCompatActivity {
             public void onPrepared(MediaPlayer mp) {
 
 //                --- UNCOMMENT FOR PHONE BUILDING
-//                mp.setLooping(true);
+                mp.setLooping(true);
 
                 vv.start();
             }
