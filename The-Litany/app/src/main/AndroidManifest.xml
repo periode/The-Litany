@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name="com.pierre.thelitany.MyActivity"
+            android:name=".VideoPlayer"
             android:screenOrientation="landscape"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.NoActionBar">

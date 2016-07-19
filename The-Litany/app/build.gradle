@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.pierre.myfirstapp"
+        applicationId "com.pierre.thelitany"
         minSdkVersion 7
         targetSdkVersion 23
         versionCode 1
