@@ -40,7 +40,7 @@ public class VideoPlayer extends AppCompatActivity {
 
         // LOAD VIDEO
         try {
-            vv.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.tl095));
+            vv.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.tl112));
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
             e.printStackTrace();
